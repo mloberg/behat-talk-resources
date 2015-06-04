@@ -8,6 +8,7 @@ interface ConcertService
 {
     /**
      * @Rest\GET("/concerts")
+     * @Rest\Returns("AppBundle\Model\ConcertCollection")
      */
     public function getConcerts();
 }
