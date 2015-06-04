@@ -2,7 +2,7 @@
 
 namespace AppBundle\Api;
 
-use Tebru\Retrofit\Adapter\RestAdapter as BaseRestAdapter;
+use Tebru\Retrofit\Adapter\Rest\RestAdapter as BaseRestAdapter;
 
 class RestAdapter
 {

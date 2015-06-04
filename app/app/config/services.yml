@@ -6,11 +6,13 @@ parameters:
 services:
     app.api.rest_adapter:
         class: %tebru_retrofit.rest_adapter.class%
-        factory: [AppBundle\Api\RestAdapter, get]
+        factory: [ AppBundle\Api\RestAdapter, get ]
+        arguments:
+            - %api_base_url%
 
     app.api.concerts:
         class: AppBundle\Api\Service\ConcertService
-        factory: [@app.api.rest_adapter, create]
+        factory: [ @app.api.rest_adapter, create ]
         arguments:
             - AppBundle\Api\Service\ConcertService
         tags:
