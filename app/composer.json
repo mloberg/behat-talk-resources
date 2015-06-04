@@ -26,7 +26,9 @@
         "braincrafted/bootstrap-bundle": "^2.1"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "behat/mink-extension": "^2.0",
+        "behat/mink-goutte-driver": "^1.1"
     },
     "scripts": {
         "post-root-package-install": [

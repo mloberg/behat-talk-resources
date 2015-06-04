@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Upcoming Concerts</h1>
 
-    <ul>
+    <ul id="concerts">
         {% for concert in concerts.concerts %}
             <li><a href="{{ path('concert_detail', {'id': concert.id}) }}">{{ concert.title }}</a></li>
         {% endfor %}

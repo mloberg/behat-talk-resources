@@ -1,0 +1,13 @@
+default:
+    suites:
+        default:
+            paths:
+                - %paths.base%/src/AppBundle/Tests/Feature
+            contexts:
+                - AppBundle\Tests\Feature\Context\FeatureContext:
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost:8000
+            sessions:
+                default:
+                    goutte: ~
