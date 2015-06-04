@@ -22,7 +22,8 @@
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "tebru/retrofit-bundle": "0.2.*",
-        "jms/di-extra-bundle": "^1.5"
+        "jms/di-extra-bundle": "^1.5",
+        "braincrafted/bootstrap-bundle": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
