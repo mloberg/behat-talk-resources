@@ -11,4 +11,10 @@ interface ConcertService
      * @Rest\Returns("AppBundle\Model\ConcertCollection")
      */
     public function getConcerts();
+
+    /**
+     * @Rest\GET("/concerts/{id}")
+     * @Rest\Returns("AppBundle\Model\Concert")
+     */
+    public function getConcert($id);
 }
