@@ -7,6 +7,8 @@ class ConcertTableSeeder extends Seeder
 {
     public function run()
     {
+        DB::table('concerts')->delete();
+
         Concert::create([
             'title'       => 'Basilica Block Party',
             'description' => 'Join us July 10 & 11, 2015 for the annual Basilica Block Party featuring Weezer, Wilco, O.A.R., Fitz and the Tantrums, Zoo Animal, and more.',

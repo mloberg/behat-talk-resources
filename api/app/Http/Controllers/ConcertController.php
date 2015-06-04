@@ -11,7 +11,9 @@ class ConcertController extends Controller
     {
         $concerts = Concert::all();
 
-        return response()->json($concerts);
+        return response()->json([
+            'data' => $concerts,
+        ]);
     }
 
     public function getConcert($id)
