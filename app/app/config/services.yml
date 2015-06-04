@@ -4,6 +4,14 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.api.rest_adapter:
+        class: %tebru_retrofit.rest_adapter.class%
+        factory: [AppBundle\Api\RestAdapter, get]
+
+    app.api.concerts:
+        class: AppBundle\Api\Service\ConcertService
+        factory: [@app.api.rest_adapter, create]
+        arguments:
+            - AppBundle\Api\Service\ConcertService
+        tags:
+            - { name: tebru_retrofit.register }
