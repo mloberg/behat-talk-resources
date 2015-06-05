@@ -69,6 +69,14 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @Given I have the payload:
+     */
+    public function iHaveThePayload(PyStringNode $payload)
+    {
+        $this->requestPayload = (string) $payload;
+    }
+
+    /**
      * @When /^I request "(GET|PUT|POST|DELETE) ([^"]*)"$/
      */
     public function iRequest($httpMethod, $resource)
@@ -81,7 +89,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
             switch ($httpMethod) {
                 case 'PUT':
                 case 'POST':
-                    $this->response = $this->client->$method($resource, null, $this->requestPayload);
+                    $this->response = $this->client->$method($resource, ['body' => $this->requestPayload]);
                     break;
                 default:
                     $this->response = $this->client->$method($resource);
@@ -143,6 +151,26 @@ class FeatureContext implements Context, SnippetAcceptingContext
         foreach ($properties->getStrings() as $property) {
             $this->thePropertyExists($property);
         }
+    }
+
+    /**
+     * @Then the :property property equals :expectedValue
+     */
+    public function thePropertyEquals($property, $expectedValue)
+    {
+        $payload = $this->getScopePayload();
+        $actualValue = $this->arrayGet($payload, $property);
+
+        PHPUnit_Framework_Assert::assertEquals(
+            $actualValue,
+            $expectedValue,
+            sprintf(
+                'Asserting the [%s] property in current scope equals [%s]: %s',
+                $property,
+                $expectedValue,
+                json_encode($payload)
+            )
+        );
     }
 
     /**

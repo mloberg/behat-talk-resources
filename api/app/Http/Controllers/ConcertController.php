@@ -27,7 +27,7 @@ class ConcertController extends Controller
     {
         $concert = Concert::create($request->json()->all());
 
-        return response()->json($concert);
+        return response()->json($concert, 201);
     }
 
     public function deleteConcert($id)
