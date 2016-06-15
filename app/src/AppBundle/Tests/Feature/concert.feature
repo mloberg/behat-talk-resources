@@ -1,6 +1,6 @@
 Feature: Concerts
   In order to save upcoming concerts to my calendar
-  As a vistor
+  As a visitor
   I need to be able to view upcoming concerts
 
   Scenario: View all upcoming concerts

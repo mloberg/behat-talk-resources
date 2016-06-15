@@ -3,18 +3,20 @@
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Response;
-
-require_once __DIR__ . '/../../../bootstrap/app.php';
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext implements Context, SnippetAcceptingContext
 {
+    /**
+     * @var \Laravel\Lumen\Application
+     */
+    var $app;
+
     /**
      * @var Client
      */
@@ -57,6 +59,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $config['base_uri'] = $baseUrl;
 
         $this->client = new Client($config);
+
+        $this->app = require __DIR__ . '/../../../bootstrap/app.php';
     }
 
     /**
@@ -64,8 +68,10 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function theDatabaseHasRecords()
     {
-        $seeder = new DatabaseSeeder();
-        $seeder->run();
+        $artisan = $this->app[\Illuminate\Contracts\Console\Kernel::class];
+
+        $artisan->call('migrate');
+        $artisan->call('db:seed');
     }
 
     /**
