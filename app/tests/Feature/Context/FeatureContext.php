@@ -1,6 +1,6 @@
 <?php
- 
-namespace AppBundle\Tests\Feature\Context;
+
+namespace Tests\Feature\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
